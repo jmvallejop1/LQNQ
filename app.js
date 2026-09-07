@@ -416,14 +416,14 @@
     document.body.removeChild(textArea);
   }
 
-  function showToast() {
+  function showToast(msg = '¡Copiado para WhatsApp con éxito! 📋') {
     const toast = document.getElementById('copy-toast');
     if (!toast) return;
-    toast.textContent = '¡Copiado para WhatsApp con éxito! 📋';
+    toast.textContent = msg;
     toast.style.display = 'block';
     setTimeout(() => {
       toast.style.display = 'none';
-    }, 3000);
+    }, 2800);
   }
 
   // --- Event Listeners Setup ---
@@ -518,23 +518,30 @@
       });
     }
 
-    const btnResetAll = document.getElementById('btn-reset-all');
-    if (btnResetAll) {
-      btnResetAll.addEventListener('click', () => {
-        if (confirm('¿Quieres reiniciar todas las selecciones a cero?')) {
-          for (const day of Object.keys(state.dinners)) {
-            state.dinners[day].socio = 0;
-            state.dinners[day].invitado = 0;
-          }
-          state.bonos.peña = 0;
-          state.bonos.cubatas = 0;
-          state.bonos.cervezas = 0;
-          updateUI();
+    function resetAll() {
+      if (confirm('¿Quieres empezar de nuevo y poner todas las cantidades a cero?')) {
+        for (const day of Object.keys(state.dinners)) {
+          state.dinners[day].socio = 0;
+          state.dinners[day].invitado = 0;
         }
-      });
+        state.bonos.peña = 0;
+        state.bonos.cubatas = 0;
+        state.bonos.cervezas = 0;
+        updateUI();
+        showToast('¡Empezamos de nuevo! Calculadora a cero 🔄');
+      }
     }
 
-    // 5. WhatsApp and Copy Buttons
+    const btnResetAll = document.getElementById('btn-reset-all');
+    if (btnResetAll) btnResetAll.addEventListener('click', resetAll);
+
+    const btnStartOver = document.getElementById('btn-start-over');
+    if (btnStartOver) btnStartOver.addEventListener('click', resetAll);
+
+    const btnMobileReset = document.getElementById('btn-mobile-reset');
+    if (btnMobileReset) btnMobileReset.addEventListener('click', resetAll);
+
+    // 5. WhatsApp Button
     const btnWhatsApp = document.getElementById('btn-whatsapp');
     if (btnWhatsApp) {
       btnWhatsApp.addEventListener('click', () => {
@@ -543,23 +550,11 @@
       });
     }
 
-
-
     const btnMobileWa = document.getElementById('btn-mobile-wa');
     if (btnMobileWa) {
       btnMobileWa.addEventListener('click', () => {
         const text = generateSummaryText();
         copyToClipboard(text);
-      });
-    }
-
-    const btnMobileScroll = document.getElementById('btn-mobile-scroll');
-    if (btnMobileScroll) {
-      btnMobileScroll.addEventListener('click', () => {
-        const sidebar = document.getElementById('sidebar-summary');
-        if (sidebar) {
-          sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
       });
     }
 
