@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Efectivo - San Mateo 2026 | Los Que No Querían</title>
+  <meta name="description" content="Calcula cuánto dinero en efectivo necesitas llevar a las fiestas de San Mateo 2026 en la Peña Los Que No Querían (Monzón): cenas para peñistas y no peñistas, bonos de peña y bonos del SENPA.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/logo_lqnq.jpg">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background decorative glows -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Header Section -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="brand-group">
+        <div class="logo-wrapper">
+          <img src="images/logo_lqnq.jpg" alt="Logo Peña Los Que No Querían Monzón" class="peña-logo" id="logo-img">
+        </div>
+        <div class="brand-text">
+          <div class="badge-tag">
+            <span class="badge-dot"></span> SAN MATEO 2026 · MONZÓN
+          </div>
+          <h1 class="main-title">Calculadora de <span class="gradient-text">Efectivo</span></h1>
+          <p class="subtitle">Peña <strong>Los Que No Querían</strong> · Cenas y Bonos</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-open-cartel" class="btn btn-glass" title="Ver cartel de comidas">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+          <span>Ver Cartel de Comidas</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cash Alert Bar -->
+  <aside class="cash-alert-banner">
+    <div class="container banner-inner">
+      <div class="alert-icon-box">
+        <svg class="icon-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <div class="alert-content">
+        <strong>¡IMPORTANTE! Sólo pagos en efectivo.</strong>
+        <span>No se admiten tarjetas ni Bizum en la peña. Puedes combinar plazas de peñistas y de no peñistas libremente.</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Container -->
+  <main class="container main-layout">
+    
+    <!-- Left Column: Form & Selection -->
+    <div class="calculator-content">
+
+      <!-- Dinners Section -->
+      <section class="section-card" id="section-cenas" aria-label="Cenas de San Mateo">
+        <div class="section-top-bar">
+          <div>
+            <div class="section-badge">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+              <span>MENÚS SAN MATEO 2026</span>
+            </div>
+            <h2 class="section-title">Cenas de Fiestas</h2>
+            <p class="section-desc">Selecciona cuántas personas asisten de cada tipo (Peñista o No Peñista):</p>
+          </div>
+          
+          <div class="bulk-actions">
+            <button type="button" id="btn-clear-dinners" class="btn-chip btn-chip-ghost" title="Quitar todas las cenas">
+              <span>Limpiar cenas</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dinner List Grid -->
+        <div class="dinners-list" id="dinners-list">
+
+          <!-- JUEVES 17 -->
+          <article class="dinner-card" data-day="jueves" id="card-dinner-jueves">
+            <div class="dinner-main-header">
+              <div class="dinner-date-badge date-pink">
+                <span class="day-name">JUEVES</span>
+                <span class="day-number">17</span>
+              </div>
+              <div class="dinner-header-info">
+                <h3 class="dinner-title">Paella (de carne)</h3>
+                <ul class="dinner-menu-list">
+                  <li>Paella casera de carne</li>
+                  <li>Postre y café incluidos</li>
+                </ul>
+              </div>
+              <div class="dinner-card-summary">
+                <span class="card-total-label">Total noche</span>
+                <span class="card-total-val" id="total-dinner-jueves">0 €</span>
+              </div>
+            </div>
+
+            <div class="dinner-tiers-grid">
+              <!-- Tier Peñista -->
+              <div class="tier-box tier-socio" id="box-jueves-socio">
+                <div class="tier-info">
+                  <span class="tier-badge">⭐ PEÑISTA (SOCIO)</span>
+                  <div class="tier-price">13 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-jueves-socio" aria-label="Restar peñista jueves" disabled>−</button>
+                    <input type="number" id="input-dinner-jueves-socio" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas jueves peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-jueves-socio" aria-label="Sumar peñista jueves">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-jueves-socio">0 €</div>
+                </div>
+              </div>
+
+              <!-- Tier No Peñista -->
+              <div class="tier-box tier-invitado" id="box-jueves-invitado">
+                <div class="tier-info">
+                  <span class="tier-badge badge-invitado">👥 NO PEÑISTA</span>
+                  <div class="tier-price">20 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-jueves-invitado" aria-label="Restar no peñista jueves" disabled>−</button>
+                    <input type="number" id="input-dinner-jueves-invitado" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas jueves no peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-jueves-invitado" aria-label="Sumar no peñista jueves">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-jueves-invitado">0 €</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- VIERNES 18 -->
+          <article class="dinner-card" data-day="viernes" id="card-dinner-viernes">
+            <div class="dinner-main-header">
+              <div class="dinner-date-badge date-orange">
+                <span class="day-name">VIERNES</span>
+                <span class="day-number">18</span>
+              </div>
+              <div class="dinner-header-info">
+                <h3 class="dinner-title">Albóndigas con Tomate</h3>
+                <ul class="dinner-menu-list">
+                  <li>Ensalada ilustrada</li>
+                  <li>Albóndigas caseras con tomate</li>
+                  <li>Postre y café incluidos</li>
+                </ul>
+              </div>
+              <div class="dinner-card-summary">
+                <span class="card-total-label">Total noche</span>
+                <span class="card-total-val" id="total-dinner-viernes">0 €</span>
+              </div>
+            </div>
+
+            <div class="dinner-tiers-grid">
+              <!-- Tier Peñista -->
+              <div class="tier-box tier-socio" id="box-viernes-socio">
+                <div class="tier-info">
+                  <span class="tier-badge">⭐ PEÑISTA (SOCIO)</span>
+                  <div class="tier-price">13 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-viernes-socio" aria-label="Restar peñista viernes" disabled>−</button>
+                    <input type="number" id="input-dinner-viernes-socio" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas viernes peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-viernes-socio" aria-label="Sumar peñista viernes">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-viernes-socio">0 €</div>
+                </div>
+              </div>
+
+              <!-- Tier No Peñista -->
+              <div class="tier-box tier-invitado" id="box-viernes-invitado">
+                <div class="tier-info">
+                  <span class="tier-badge badge-invitado">👥 NO PEÑISTA</span>
+                  <div class="tier-price">20 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-viernes-invitado" aria-label="Restar no peñista viernes" disabled>−</button>
+                    <input type="number" id="input-dinner-viernes-invitado" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas viernes no peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-viernes-invitado" aria-label="Sumar no peñista viernes">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-viernes-invitado">0 €</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SÁBADO 19 -->
+          <article class="dinner-card" data-day="sabado" id="card-dinner-sabado">
+            <div class="dinner-main-header">
+              <div class="dinner-date-badge date-blue">
+                <span class="day-name">SÁBADO</span>
+                <span class="day-number">19</span>
+              </div>
+              <div class="dinner-header-info">
+                <h3 class="dinner-title">Pollo al Chilindrón</h3>
+                <ul class="dinner-menu-list">
+                  <li>Pollo al chilindrón con patatas panadera</li>
+                  <li>Postre y café incluidos</li>
+                </ul>
+              </div>
+              <div class="dinner-card-summary">
+                <span class="card-total-label">Total noche</span>
+                <span class="card-total-val" id="total-dinner-sabado">0 €</span>
+              </div>
+            </div>
+
+            <div class="dinner-tiers-grid">
+              <!-- Tier Peñista -->
+              <div class="tier-box tier-socio" id="box-sabado-socio">
+                <div class="tier-info">
+                  <span class="tier-badge">⭐ PEÑISTA (SOCIO)</span>
+                  <div class="tier-price">13 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-sabado-socio" aria-label="Restar peñista sábado" disabled>−</button>
+                    <input type="number" id="input-dinner-sabado-socio" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas sábado peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-sabado-socio" aria-label="Sumar peñista sábado">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-sabado-socio">0 €</div>
+                </div>
+              </div>
+
+              <!-- Tier No Peñista -->
+              <div class="tier-box tier-invitado" id="box-sabado-invitado">
+                <div class="tier-info">
+                  <span class="tier-badge badge-invitado">👥 NO PEÑISTA</span>
+                  <div class="tier-price">20 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-sabado-invitado" aria-label="Restar no peñista sábado" disabled>−</button>
+                    <input type="number" id="input-dinner-sabado-invitado" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas sábado no peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-sabado-invitado" aria-label="Sumar no peñista sábado">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-sabado-invitado">0 €</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- DOMINGO 20 -->
+          <article class="dinner-card" data-day="domingo" id="card-dinner-domingo">
+            <div class="dinner-main-header">
+              <div class="dinner-date-badge date-green">
+                <span class="day-name">DOMINGO</span>
+                <span class="day-number">20</span>
+              </div>
+              <div class="dinner-header-info">
+                <h3 class="dinner-title">Carrilleras al Vino</h3>
+                <ul class="dinner-menu-list">
+                  <li>Carrilleras al vino con puré de patata</li>
+                  <li>Postre y café incluidos</li>
+                </ul>
+              </div>
+              <div class="dinner-card-summary">
+                <span class="card-total-label">Total noche</span>
+                <span class="card-total-val" id="total-dinner-domingo">0 €</span>
+              </div>
+            </div>
+
+            <div class="dinner-tiers-grid">
+              <!-- Tier Peñista -->
+              <div class="tier-box tier-socio" id="box-domingo-socio">
+                <div class="tier-info">
+                  <span class="tier-badge">⭐ PEÑISTA (SOCIO)</span>
+                  <div class="tier-price">13 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-domingo-socio" aria-label="Restar peñista domingo" disabled>−</button>
+                    <input type="number" id="input-dinner-domingo-socio" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas domingo peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-domingo-socio" aria-label="Sumar peñista domingo">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-domingo-socio">0 €</div>
+                </div>
+              </div>
+
+              <!-- Tier No Peñista -->
+              <div class="tier-box tier-invitado" id="box-domingo-invitado">
+                <div class="tier-info">
+                  <span class="tier-badge badge-invitado">👥 NO PEÑISTA</span>
+                  <div class="tier-price">20 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-domingo-invitado" aria-label="Restar no peñista domingo" disabled>−</button>
+                    <input type="number" id="input-dinner-domingo-invitado" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas domingo no peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-domingo-invitado" aria-label="Sumar no peñista domingo">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-domingo-invitado">0 €</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- LUNES 21: CENA DEL SOBAQUILLO -->
+          <article class="dinner-card dinner-sobaquillo" data-day="lunes" id="card-dinner-lunes">
+            <div class="dinner-main-header">
+              <div class="dinner-date-badge date-yellow">
+                <span class="day-name">LUNES</span>
+                <span class="day-number">21</span>
+              </div>
+              <div class="dinner-header-info">
+                <div class="sobaquillo-tag">CENA POPULAR DEL SOBAQUILLO</div>
+                <h3 class="dinner-title">Perritos Calientes</h3>
+                <ul class="dinner-menu-list">
+                  <li>Perritos calientes para cerrar fiestas</li>
+                  <li>Socios 3 € · No socios 5 €</li>
+                </ul>
+              </div>
+              <div class="dinner-card-summary">
+                <span class="card-total-label">Total noche</span>
+                <span class="card-total-val" id="total-dinner-lunes">0 €</span>
+              </div>
+            </div>
+
+            <div class="dinner-tiers-grid">
+              <!-- Tier Peñista -->
+              <div class="tier-box tier-socio" id="box-lunes-socio">
+                <div class="tier-info">
+                  <span class="tier-badge">⭐ PEÑISTA (SOCIO)</span>
+                  <div class="tier-price price-highlight">3 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-lunes-socio" aria-label="Restar peñista lunes" disabled>−</button>
+                    <input type="number" id="input-dinner-lunes-socio" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas lunes peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-lunes-socio" aria-label="Sumar peñista lunes">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-lunes-socio">0 €</div>
+                </div>
+              </div>
+
+              <!-- Tier No Peñista -->
+              <div class="tier-box tier-invitado" id="box-lunes-invitado">
+                <div class="tier-info">
+                  <span class="tier-badge badge-invitado">👥 NO PEÑISTA</span>
+                  <div class="tier-price price-highlight">5 € <span class="tier-unit">/ comensal</span></div>
+                </div>
+                <div class="tier-counter-wrap">
+                  <div class="stepper">
+                    <button type="button" class="btn-step btn-minus" data-target="dinner-lunes-invitado" aria-label="Restar no peñista lunes" disabled>−</button>
+                    <input type="number" id="input-dinner-lunes-invitado" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de cenas lunes no peñista">
+                    <button type="button" class="btn-step btn-plus" data-target="dinner-lunes-invitado" aria-label="Sumar no peñista lunes">+</button>
+                  </div>
+                  <div class="tier-subtotal" id="subtotal-lunes-invitado">0 €</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Bonos Section -->
+      <section class="section-card" id="section-bonos" aria-label="Bonos de Bebida y SENPA">
+        <div class="section-top-bar">
+          <div>
+            <div class="section-badge badge-bonos">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <span>BARRAS Y BEBIDAS</span>
+            </div>
+            <h2 class="section-title">Bonos de Peña y SENPA</h2>
+            <p class="section-desc">Consigue tus bonos para disfrutar las fiestas sin colas:</p>
+          </div>
+        </div>
+
+        <div class="bonos-grid">
+
+          <!-- Bono Peña -->
+          <article class="bono-card" id="card-bono-peña">
+            <div class="bono-header">
+              <div class="bono-icon-wrap icon-peña">🎟️</div>
+              <div class="bono-info">
+                <div class="bono-badge">BARRA PEÑA</div>
+                <h3 class="bono-title">Bono de la Peña</h3>
+                <p class="bono-desc">Bono oficial para consumiciones en la peña</p>
+                <div class="bono-price-pill"><strong>20 €</strong> / bono</div>
+              </div>
+            </div>
+            <div class="bono-counter-zone">
+              <div class="stepper">
+                <button type="button" class="btn-step btn-minus" data-target="bono-peña" aria-label="Restar bono peña" disabled>−</button>
+                <input type="number" id="input-bono-peña" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de bonos de la peña">
+                <button type="button" class="btn-step btn-plus" data-target="bono-peña" aria-label="Sumar bono peña">+</button>
+              </div>
+              <div class="item-subtotal" id="subtotal-bono-peña">0 €</div>
+            </div>
+
+          </article>
+
+          <!-- Bono Cubatas SENPA -->
+          <article class="bono-card" id="card-bono-senpa-cubatas">
+            <div class="bono-header">
+              <div class="bono-icon-wrap icon-cocktail">🍹</div>
+              <div class="bono-info">
+                <div class="bono-badge badge-senpa">ESPACIO SENPA</div>
+                <h3 class="bono-title">Bono Cubatas SENPA</h3>
+                <p class="bono-desc">10 cubatas · Te sale a <strong>6 €</strong> / copa</p>
+                <div class="bono-price-pill"><strong>60 €</strong> / bono (10 uds)</div>
+              </div>
+            </div>
+            <div class="bono-counter-zone">
+              <div class="stepper">
+                <button type="button" class="btn-step btn-minus" data-target="bono-cubatas" aria-label="Restar bono cubatas" disabled>−</button>
+                <input type="number" id="input-bono-cubatas" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de bonos de cubatas senpa">
+                <button type="button" class="btn-step btn-plus" data-target="bono-cubatas" aria-label="Sumar bono cubatas">+</button>
+              </div>
+              <div class="item-subtotal" id="subtotal-bono-cubatas">0 €</div>
+            </div>
+
+          </article>
+
+          <!-- Bono Cervezas SENPA -->
+          <article class="bono-card" id="card-bono-senpa-cervezas">
+            <div class="bono-header">
+              <div class="bono-icon-wrap icon-beer">🍺</div>
+              <div class="bono-info">
+                <div class="bono-badge badge-senpa">ESPACIO SENPA</div>
+                <h3 class="bono-title">Bono Cervezas SENPA</h3>
+                <p class="bono-desc">10 cervezas · Te sale a <strong>3 €</strong> / cerveza</p>
+                <div class="bono-price-pill"><strong>30 €</strong> / bono (10 uds)</div>
+              </div>
+            </div>
+            <div class="bono-counter-zone">
+              <div class="stepper">
+                <button type="button" class="btn-step btn-minus" data-target="bono-cervezas" aria-label="Restar bono cervezas" disabled>−</button>
+                <input type="number" id="input-bono-cervezas" class="stepper-input" min="0" max="99" value="0" aria-label="Cantidad de bonos de cerveza senpa">
+                <button type="button" class="btn-step btn-plus" data-target="bono-cervezas" aria-label="Sumar bono cervezas">+</button>
+              </div>
+              <div class="item-subtotal" id="subtotal-bono-cervezas">0 €</div>
+            </div>
+
+          </article>
+
+        </div>
+      </section>
+
+
+
+    </div>
+
+    <!-- Right Column: Live Summary & Cash Machine (Sticky on Desktop) -->
+    <aside class="calculator-sidebar" id="sidebar-summary">
+      
+      <!-- Live Ticket Card -->
+      <div class="summary-card">
+        
+        <div class="summary-header">
+          <div class="summary-title-wrap">
+            <div class="receipt-icon">🧾</div>
+            <div>
+              <h2 class="summary-title">Total en Efectivo</h2>
+              <span class="user-type-indicator">San Mateo 2026 · LQNQ</span>
+            </div>
+          </div>
+          <button type="button" id="btn-reset-all" class="btn-icon-text" title="Reiniciar toda la calculadora">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            <span>Reiniciar</span>
+          </button>
+        </div>
+
+        <!-- Big Total Display -->
+        <div class="grand-total-box">
+          <span class="total-label">CANTIDAD TOTAL A LLEVAR</span>
+          <div class="total-amount-row">
+            <span class="total-number" id="display-grand-total">0</span>
+            <span class="total-currency">€</span>
+          </div>
+          <p class="total-helper" id="total-helper-text">Selecciona tus cenas o bonos</p>
+        </div>
+
+        <!-- Breakdown List -->
+        <div class="breakdown-container">
+          <h3 class="breakdown-heading">Desglose del cálculo:</h3>
+          <div class="breakdown-list" id="breakdown-list">
+            <div class="empty-state" id="empty-state-msg">
+              <span>No has seleccionado ningún elemento todavía.</span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Action Buttons -->
+        <div class="summary-actions">
+          <button type="button" id="btn-whatsapp" class="btn btn-whatsapp">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.088.072.19.014.305-.058.115-.087.188-.173.289l-.26.309c-.087.098-.178.204-.076.379.102.175.454.748.974 1.211.67.596 1.235.78 1.41.867.174.088.276.073.379-.044.103-.117.436-.508.552-.682.116-.174.232-.145.39-.087.159.058 1.004.474 1.177.561.173.087.289.13.332.203.043.072.043.419-.101.824z"/>
+            </svg>
+            <span>Copiar para WhatsApp</span>
+          </button>
+
+
+        </div>
+
+        <div id="copy-toast" class="copy-toast" role="alert" aria-live="polite">
+          ¡Copiado al portapapeles con éxito! 📋
+        </div>
+
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- Mobile Floating Sticky Bar -->
+  <div class="mobile-sticky-bar" id="mobile-bar">
+    <div class="mobile-bar-content">
+      <div class="mobile-total-info">
+        <span class="mobile-label">LLEVAR EN EFECTIVO:</span>
+        <div class="mobile-sum">
+          <strong id="mobile-grand-total">0 €</strong>
+          <span class="mobile-items-badge" id="mobile-items-count">0 comensales</span>
+        </div>
+      </div>
+      <div class="mobile-buttons">
+        <button type="button" class="btn-mobile-open" id="btn-mobile-scroll" title="Ver desglose y billetes">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M6 9l6 6 6-6"></path>
+          </svg>
+          <span>Ver Desglose</span>
+        </button>
+        <button type="button" class="btn-mobile-wa" id="btn-mobile-wa" title="Copiar para WhatsApp">
+          <span>📲 WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cartel Modal Viewer -->
+  <div class="modal-backdrop" id="modal-cartel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <img src="images/logo_lqnq.jpg" alt="Logo LQNQ" class="modal-logo">
+          <div>
+            <h3 class="modal-title">Cartel de Comidas · San Mateo 2026</h3>
+            <p class="modal-sub">Peña Los Que No Querían (Monzón)</p>
+          </div>
+        </div>
+        <button type="button" class="btn-close-modal" id="btn-close-modal" aria-label="Cerrar modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-image-wrap">
+          <img src="images/cartel_cenas.jpg" alt="Cartel de comidas San Mateo 2026 Peña Los Que No Querían" class="modal-img">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="modal-footnote">📌 Sólo pagos en efectivo. ¡Te esperamos en la peña!</span>
+        <button type="button" class="btn btn-secondary btn-sm" id="btn-close-modal-2">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <img src="images/logo_lqnq.jpg" alt="Logo LQNQ" class="footer-logo">
+        <p><strong>Peña Los Que No Querían · Monzón</strong><br>Fiestas de San Mateo 2026</p>
+      </div>
+      <p class="footer-copy">Calculadora de efectivo para peñistas y amigos · ¡Viva San Mateo!</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
