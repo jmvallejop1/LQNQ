@@ -301,6 +301,40 @@
       }
     }
 
+    // Section Accordion Summary Pills
+    const pillCenas = document.getElementById('pill-cenas-summary');
+    if (pillCenas) {
+      if (totalDinersCount > 0) {
+        pillCenas.textContent = `${totalDinersCount} ${totalDinersCount === 1 ? 'comensal' : 'comensales'} · ${dinnersTotal} €`;
+        pillCenas.classList.add('is-active');
+      } else {
+        pillCenas.textContent = '0 comensales';
+        pillCenas.classList.remove('is-active');
+      }
+    }
+
+    const pillBonos = document.getElementById('pill-bonos-summary');
+    if (pillBonos) {
+      if (totalBonosCount > 0) {
+        pillBonos.textContent = `${totalBonosCount} ${totalBonosCount === 1 ? 'bono' : 'bonos'} · ${bonosTotal} €`;
+        pillBonos.classList.add('is-active');
+      } else {
+        pillBonos.textContent = '0 bonos';
+        pillBonos.classList.remove('is-active');
+      }
+    }
+
+    const pillMerch = document.getElementById('pill-merch-summary');
+    if (pillMerch) {
+      if (totalMerchCount > 0) {
+        pillMerch.textContent = `${totalMerchCount} ${totalMerchCount === 1 ? 'artículo' : 'artículos'} · ${merchTotal} €`;
+        pillMerch.classList.add('is-active');
+      } else {
+        pillMerch.textContent = '0 artículos';
+        pillMerch.classList.remove('is-active');
+      }
+    }
+
     // 5. Breakdown ticket
     renderBreakdownList();
 
@@ -745,6 +779,28 @@
       if (e.key === 'Escape' && modalCartel && modalCartel.classList.contains('is-active')) {
         closeModal();
       }
+    });
+
+    // 7. Accordion Collapsible Sections
+    document.querySelectorAll('.section-accordion-header').forEach(header => {
+      function toggleSection(e) {
+        if (e.target.closest('button') || e.target.closest('input') || e.target.closest('a')) {
+          return;
+        }
+        const section = header.closest('.section-card');
+        if (!section) return;
+        const isCollapsed = section.classList.toggle('is-collapsed');
+        header.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+        header.setAttribute('title', isCollapsed ? 'Desplegar sección' : 'Plegar sección');
+      }
+
+      header.addEventListener('click', toggleSection);
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleSection(e);
+        }
+      });
     });
   }
 

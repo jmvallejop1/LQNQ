@@ -75,9 +75,9 @@
     <div class="calculator-content">
 
       <!-- Dinners Section -->
-      <section class="section-card" id="section-cenas" aria-label="Cenas de San Mateo">
-        <div class="section-top-bar">
-          <div>
+      <section class="section-card is-collapsed" id="section-cenas" aria-label="Cenas de San Mateo">
+        <div class="section-top-bar section-accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="body-cenas" title="Desplegar sección">
+          <div class="section-header-left">
             <div class="section-badge">
               <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
@@ -88,19 +88,31 @@
               </svg>
               <span>MENÚS SAN MATEO 2026</span>
             </div>
-            <h2 class="section-title">Cenas de Fiestas</h2>
+            <div class="section-title-wrapper">
+              <h2 class="section-title">Cenas de Fiestas</h2>
+              <span class="section-mini-pill" id="pill-cenas-summary">0 comensales</span>
+            </div>
             <p class="section-desc">Selecciona cuántas personas asisten de cada tipo (Peñista o No Peñista):</p>
           </div>
           
-          <div class="bulk-actions">
-            <button type="button" id="btn-clear-dinners" class="btn-chip btn-chip-ghost" title="Quitar todas las cenas">
-              <span>Limpiar cenas</span>
-            </button>
+          <div class="section-header-right">
+            <div class="bulk-actions">
+              <button type="button" id="btn-clear-dinners" class="btn-chip btn-chip-ghost" title="Quitar todas las cenas">
+                <span>Limpiar cenas</span>
+              </button>
+            </div>
+            <div class="accordion-toggle-icon" aria-hidden="true">
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
           </div>
         </div>
 
-        <!-- Dinner List Grid -->
-        <div class="dinners-list" id="dinners-list">
+        <div class="section-collapsible-body" id="body-cenas">
+          <div class="section-collapsible-inner">
+            <!-- Dinner List Grid -->
+            <div class="dinners-list" id="dinners-list">
 
           <!-- JUEVES 17 -->
           <article class="dinner-card" data-day="jueves" id="card-dinner-jueves">
@@ -380,24 +392,39 @@
           </article>
 
         </div>
+          </div>
+        </div>
       </section>
 
       <!-- Bonos Section -->
-      <section class="section-card" id="section-bonos" aria-label="Bonos de Bebida y SENPA">
-        <div class="section-top-bar">
-          <div>
+      <section class="section-card is-collapsed" id="section-bonos" aria-label="Bonos de Bebida y SENPA">
+        <div class="section-top-bar section-accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="body-bonos" title="Desplegar sección">
+          <div class="section-header-left">
             <div class="section-badge badge-bonos">
               <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
               <span>BARRAS Y BEBIDAS</span>
             </div>
-            <h2 class="section-title">Bonos de Peña y SENPA</h2>
+            <div class="section-title-wrapper">
+              <h2 class="section-title">Bonos de Peña y SENPA</h2>
+              <span class="section-mini-pill" id="pill-bonos-summary">0 bonos</span>
+            </div>
             <p class="section-desc">Consigue tus bonos para disfrutar las fiestas sin colas:</p>
+          </div>
+
+          <div class="section-header-right">
+            <div class="accordion-toggle-icon" aria-hidden="true">
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
           </div>
         </div>
 
-        <div class="bonos-grid">
+        <div class="section-collapsible-body" id="body-bonos">
+          <div class="section-collapsible-inner">
+            <div class="bonos-grid">
 
           <!-- Bono Peña -->
           <article class="bono-card" id="card-bono-peña">
@@ -466,24 +493,39 @@
           </article>
 
         </div>
+          </div>
+        </div>
       </section>
 
       <!-- Merchandising y Lotería Section -->
-      <section class="section-card" id="section-merch" aria-label="Ropa y Lotería de la Peña">
-        <div class="section-top-bar">
-          <div>
+      <section class="section-card is-collapsed" id="section-merch" aria-label="Ropa y Lotería de la Peña">
+        <div class="section-top-bar section-accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="body-merch" title="Desplegar sección">
+          <div class="section-header-left">
             <div class="section-badge badge-extra">
               <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"></path>
               </svg>
               <span>ROPA Y LOTERÍA</span>
             </div>
-            <h2 class="section-title">Merchandising y Lotería</h2>
+            <div class="section-title-wrapper">
+              <h2 class="section-title">Merchandising y Lotería</h2>
+              <span class="section-mini-pill" id="pill-merch-summary">0 artículos</span>
+            </div>
             <p class="section-desc">Consigue la ropa oficial de la peña y tus participaciones de lotería:</p>
+          </div>
+
+          <div class="section-header-right">
+            <div class="accordion-toggle-icon" aria-hidden="true">
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
           </div>
         </div>
 
-        <div class="bonos-grid">
+        <div class="section-collapsible-body" id="body-merch">
+          <div class="section-collapsible-inner">
+            <div class="bonos-grid">
 
           <!-- Camiseta -->
           <article class="bono-card" id="card-merch-camiseta">
@@ -548,6 +590,8 @@
             </div>
           </article>
 
+        </div>
+          </div>
         </div>
       </section>
 
