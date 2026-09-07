@@ -42,6 +42,21 @@
     cervezas: 30
   };
 
+  const MERCH_CONFIG = {
+    camiseta: {
+      name: 'Camiseta de la Peña',
+      price: 10
+    },
+    sudadera: {
+      name: 'Sudadera de la Peña',
+      price: 20
+    },
+    loteria: {
+      name: 'Lotería de Navidad',
+      price: 6
+    }
+  };
+
   // --- State ---
   const state = {
     dinners: {
@@ -55,6 +70,11 @@
       peña: 0,
       cubatas: 0,
       cervezas: 0
+    },
+    merch: {
+      camiseta: 0,
+      sudadera: 0,
+      loteria: 0
     }
   };
 
@@ -87,6 +107,11 @@
             state.bonos.peña = Math.max(0, parseInt(parsed.bonos.peña, 10) || 0);
             state.bonos.cubatas = Math.max(0, parseInt(parsed.bonos.cubatas, 10) || 0);
             state.bonos.cervezas = Math.max(0, parseInt(parsed.bonos.cervezas, 10) || 0);
+          }
+          if (parsed.merch) {
+            state.merch.camiseta = Math.max(0, parseInt(parsed.merch.camiseta, 10) || 0);
+            state.merch.sudadera = Math.max(0, parseInt(parsed.merch.sudadera, 10) || 0);
+            state.merch.loteria = Math.max(0, parseInt(parsed.merch.loteria, 10) || 0);
           }
         }
       }
@@ -199,8 +224,56 @@
       if (minus) minus.disabled = countCervezas <= 0;
     }
 
-    // 3. Grand Total
-    const grandTotalVal = dinnersTotal + bonosTotal;
+    // 3. Merchandising y Lotería
+    let merchTotal = 0;
+
+    // Camiseta
+    const countCamiseta = state.merch.camiseta;
+    const subCamiseta = countCamiseta * MERCH_CONFIG.camiseta.price;
+    merchTotal += subCamiseta;
+    const inputCamiseta = document.getElementById('input-merch-camiseta');
+    const subCamisetaEl = document.getElementById('subtotal-merch-camiseta');
+    const cardCamiseta = document.getElementById('card-merch-camiseta');
+    if (inputCamiseta) inputCamiseta.value = countCamiseta;
+    if (subCamisetaEl) subCamisetaEl.textContent = `${subCamiseta} €`;
+    if (cardCamiseta) {
+      cardCamiseta.classList.toggle('has-items', countCamiseta > 0);
+      const minus = cardCamiseta.querySelector('.btn-minus');
+      if (minus) minus.disabled = countCamiseta <= 0;
+    }
+
+    // Sudadera
+    const countSudadera = state.merch.sudadera;
+    const subSudadera = countSudadera * MERCH_CONFIG.sudadera.price;
+    merchTotal += subSudadera;
+    const inputSudadera = document.getElementById('input-merch-sudadera');
+    const subSudaderaEl = document.getElementById('subtotal-merch-sudadera');
+    const cardSudadera = document.getElementById('card-merch-sudadera');
+    if (inputSudadera) inputSudadera.value = countSudadera;
+    if (subSudaderaEl) subSudaderaEl.textContent = `${subSudadera} €`;
+    if (cardSudadera) {
+      cardSudadera.classList.toggle('has-items', countSudadera > 0);
+      const minus = cardSudadera.querySelector('.btn-minus');
+      if (minus) minus.disabled = countSudadera <= 0;
+    }
+
+    // Lotería
+    const countLoteria = state.merch.loteria;
+    const subLoteria = countLoteria * MERCH_CONFIG.loteria.price;
+    merchTotal += subLoteria;
+    const inputLoteria = document.getElementById('input-merch-loteria');
+    const subLoteriaEl = document.getElementById('subtotal-merch-loteria');
+    const cardLoteria = document.getElementById('card-merch-loteria');
+    if (inputLoteria) inputLoteria.value = countLoteria;
+    if (subLoteriaEl) subLoteriaEl.textContent = `${subLoteria} €`;
+    if (cardLoteria) {
+      cardLoteria.classList.toggle('has-items', countLoteria > 0);
+      const minus = cardLoteria.querySelector('.btn-minus');
+      if (minus) minus.disabled = countLoteria <= 0;
+    }
+
+    // 4. Grand Total
+    const grandTotalVal = dinnersTotal + bonosTotal + merchTotal;
     const totalEl = document.getElementById('display-grand-total');
     const mobileTotalEl = document.getElementById('mobile-grand-total');
     const mobileCountEl = document.getElementById('mobile-items-count');
@@ -210,9 +283,11 @@
     if (mobileTotalEl) mobileTotalEl.textContent = `${grandTotalVal} €`;
 
     const totalBonosCount = countPeña + countCubatas + countCervezas;
+    const totalMerchCount = countCamiseta + countSudadera + countLoteria;
     const summaryPieces = [];
     if (totalDinersCount > 0) summaryPieces.push(`${totalDinersCount} comensales`);
     if (totalBonosCount > 0) summaryPieces.push(`${totalBonosCount} bonos`);
+    if (totalMerchCount > 0) summaryPieces.push(`${totalMerchCount} artículos`);
 
     if (mobileCountEl) {
       mobileCountEl.textContent = summaryPieces.length > 0 ? summaryPieces.join(' · ') : '0 selecciones';
@@ -220,16 +295,16 @@
 
     if (helperTextEl) {
       if (grandTotalVal === 0) {
-        helperTextEl.textContent = 'Selecciona tus comensales y bonos';
+        helperTextEl.textContent = 'Selecciona tus comidas, bonos o ropa';
       } else {
         helperTextEl.textContent = `Total listo para llevar en efectivo (${summaryPieces.join(', ')})`;
       }
     }
 
-    // 4. Breakdown ticket
+    // 5. Breakdown ticket
     renderBreakdownList();
 
-    // 5. Save state
+    // 6. Save state
     saveState();
   }
 
@@ -287,10 +362,36 @@
       });
     }
 
+    // Merchandising y Lotería
+    if (state.merch.camiseta > 0) {
+      items.push({
+        type: 'extra',
+        title: 'Camiseta de la Peña',
+        qty: `${state.merch.camiseta}x (${MERCH_CONFIG.camiseta.price}€)`,
+        subtotal: `${state.merch.camiseta * MERCH_CONFIG.camiseta.price} €`
+      });
+    }
+    if (state.merch.sudadera > 0) {
+      items.push({
+        type: 'extra',
+        title: 'Sudadera de la Peña',
+        qty: `${state.merch.sudadera}x (${MERCH_CONFIG.sudadera.price}€)`,
+        subtotal: `${state.merch.sudadera * MERCH_CONFIG.sudadera.price} €`
+      });
+    }
+    if (state.merch.loteria > 0) {
+      items.push({
+        type: 'extra',
+        title: 'Lotería de Navidad',
+        qty: `${state.merch.loteria}x (${MERCH_CONFIG.loteria.price}€)`,
+        subtotal: `${state.merch.loteria * MERCH_CONFIG.loteria.price} €`
+      });
+    }
+
     if (items.length === 0) {
       listEl.innerHTML = `
         <div class="empty-state">
-          <span>No has seleccionado ningún menú ni bono todavía.</span>
+          <span>No has seleccionado ningún menú, bono ni artículo todavía.</span>
         </div>
       `;
       return;
@@ -357,7 +458,25 @@
       bonoLines.push(`  • ${state.bonos.cervezas}x Bono Cervezas SENPA (30€) = ${sub}€`);
     }
 
-    const grandTotalVal = dinnersSum + bonosSum;
+    let merchSum = 0;
+    const merchLines = [];
+    if (state.merch.camiseta > 0) {
+      const sub = state.merch.camiseta * MERCH_CONFIG.camiseta.price;
+      merchSum += sub;
+      merchLines.push(`  • ${state.merch.camiseta}x Camiseta (${MERCH_CONFIG.camiseta.price}€) = ${sub}€`);
+    }
+    if (state.merch.sudadera > 0) {
+      const sub = state.merch.sudadera * MERCH_CONFIG.sudadera.price;
+      merchSum += sub;
+      merchLines.push(`  • ${state.merch.sudadera}x Sudadera (${MERCH_CONFIG.sudadera.price}€) = ${sub}€`);
+    }
+    if (state.merch.loteria > 0) {
+      const sub = state.merch.loteria * MERCH_CONFIG.loteria.price;
+      merchSum += sub;
+      merchLines.push(`  • ${state.merch.loteria}x Lotería (${MERCH_CONFIG.loteria.price}€) = ${sub}€`);
+    }
+
+    const grandTotalVal = dinnersSum + bonosSum + merchSum;
 
     let text = `🎉 *PRESUPUESTO EFECTIVO · SAN MATEO 2026*\n`;
     text += `*Peña Los Que No Querían (Monzón)* 🏮\n`;
@@ -371,7 +490,11 @@
       text += `🍻 *BONOS Y CONSUMICIONES:*\n${bonoLines.join('\n')}\n`;
     }
 
-    if (dinnerLines.length === 0 && bonoLines.length === 0) {
+    if (merchLines.length > 0) {
+      text += `👕 *ROPA Y LOTERÍA:*\n${merchLines.join('\n')}\n`;
+    }
+
+    if (dinnerLines.length === 0 && bonoLines.length === 0 && merchLines.length === 0) {
       text += `(No hay selecciones activas todavía)\n`;
     }
 
@@ -458,6 +581,12 @@
       } else if (target === 'bono-cervezas') {
         state.bonos.cervezas = Math.max(0, state.bonos.cervezas + change);
         updateUI();
+      } else if (target.startsWith('merch-')) {
+        const key = target.replace('merch-', '');
+        if (state.merch[key] !== undefined) {
+          state.merch[key] = Math.max(0, state.merch[key] + change);
+          updateUI();
+        }
       }
     });
 
@@ -504,7 +633,28 @@
       }
     });
 
-
+    // Merch inputs
+    const merchMap = {
+      'input-merch-camiseta': 'camiseta',
+      'input-merch-sudadera': 'sudadera',
+      'input-merch-loteria': 'loteria'
+    };
+    Object.entries(merchMap).forEach(([id, key]) => {
+      const input = document.getElementById(id);
+      if (input) {
+        input.addEventListener('input', (e) => {
+          const val = parseInt(e.target.value, 10);
+          state.merch[key] = isNaN(val) ? 0 : Math.max(0, val);
+          updateUI();
+        });
+        input.addEventListener('blur', (e) => {
+          if (e.target.value === '' || isNaN(parseInt(e.target.value, 10))) {
+            state.merch[key] = 0;
+            updateUI();
+          }
+        });
+      }
+    });
 
     // 4. Reset Actions
     const btnClearDinners = document.getElementById('btn-clear-dinners');
@@ -527,6 +677,9 @@
         state.bonos.peña = 0;
         state.bonos.cubatas = 0;
         state.bonos.cervezas = 0;
+        state.merch.camiseta = 0;
+        state.merch.sudadera = 0;
+        state.merch.loteria = 0;
         updateUI();
         showToast('¡Empezamos de nuevo! Calculadora a cero 🔄');
       }

@@ -845,6 +845,9 @@ body {
 .icon-peña { background: rgba(59, 130, 246, 0.15); }
 .icon-cocktail { background: rgba(236, 72, 153, 0.15); }
 .icon-beer { background: rgba(245, 158, 11, 0.15); }
+.icon-tshirt { background: rgba(16, 185, 129, 0.15); }
+.icon-hoodie { background: rgba(139, 92, 246, 0.15); }
+.icon-loteria { background: rgba(234, 179, 8, 0.15); }
 
 .bono-badge {
   display: inline-block;
@@ -858,6 +861,10 @@ body {
 
 .badge-senpa {
   color: #fb923c;
+}
+
+.badge-loteria {
+  color: #facc15;
 }
 
 .bono-title {
@@ -909,6 +916,16 @@ body {
   color: #38bdf8;
   min-width: 45px;
   text-align: right;
+}
+
+#section-merch .bono-card.has-items {
+  border-color: #10b981;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(15, 23, 42, 0.85) 100%);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+}
+
+#section-merch .item-subtotal {
+  color: #34d399;
 }
 
 
